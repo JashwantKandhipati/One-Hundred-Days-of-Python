@@ -4,7 +4,7 @@ enemies = 1
 
 
 def increase_enemies():
-    global enemies
+    global enemies # needed to modify something that is global scope
     enemies += 1
     print(f"enemies inside function: {enemies}")
 
