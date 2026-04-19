@@ -2,18 +2,17 @@ import random
 from game_data import data
 import art
 
-
-# format the account data
+# function to format the account data
 def format_data(account):
     account_name = account["name"]
-    account_description = account["description"]
+    account_descr = account["description"]
     account_country = account["country"]
-    return f"{account_name}, a {account_description}, from {account_country}"
+    return f"{account_name}, a {account_descr}, from {account_country}"
 
-# Check if guess is correct
+# function to check if guess is correct
 def check_answer(user_guess, a_followers, b_followers):
     if a_followers > b_followers:
-        return user_guess == "a" # if guess is A then True, if B then False
+        return user_guess == "a"
     else:
         return user_guess == "b"
 
@@ -21,18 +20,15 @@ def check_answer(user_guess, a_followers, b_followers):
 print(art.logo)
 
 score = 0
-game_should_continue = True
+game_continue = True
 accountB = random.choice(data)
 
-while game_should_continue:     # Make the game repeatable
-
+while game_continue:
     # generate random account from game_data
-    # making the account at position B to go to position A
-    accountA = accountB
+    accountA = accountB     # making the account at position B to go to position A
     accountB = random.choice(data)
 
-
-    if accountA == accountB:
+    if accountB == accountA:
         accountB = random.choice(data)
 
     # Print account data
@@ -44,24 +40,21 @@ while game_should_continue:     # Make the game repeatable
     guess = input("Who has more followers? Type 'A' or 'B': ").lower()
 
     # clear the screen & reprint logo
-    print("\n" * 20)
+    print("\n" * 15)
     print(art.logo)
 
-    # check if user guess is correct
     ## get follower count of each account
     followersA = accountA["follower_count"]
     followersB = accountB["follower_count"]
 
-    ## use if statement to check if user guess is correct
+    # check if user guess is correct
     is_correct = check_answer(guess, followersA, followersB)
 
-    # score keeping
-
-
-    # Give user feedback on their guess
+    ## use if statement to check if user guess is correct
     if is_correct:
-        score += 1
-        print("You are correct! Correct score:", score)
+        score += 1          # score keeping
+        print("Your guess is correct! Current Score:", score)   # Give user feedback on their guess
     else:
-        print("You are wrong! Final score:", score)
-        game_should_continue = False
+        print("Your guess is wrong! Final Score:", score)       # Give user feedback on their guess
+        game_continue = False
+
