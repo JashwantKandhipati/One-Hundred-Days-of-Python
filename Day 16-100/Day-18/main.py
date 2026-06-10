@@ -8,7 +8,7 @@ from turtle import *
 
 turtle = Turtle()
 turtle.shape("turtle")
-turtle.color("magenta")
+turtle.color("blue")
 
 
 for _ in range(4):
