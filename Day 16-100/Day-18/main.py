@@ -11,10 +11,11 @@ turtle.shape("turtle")
 turtle.color("blue")
 
 
-for _ in range(4):
-    turtle.forward(100)
-    turtle.right(90)
-
+for _ in range(15):
+    turtle.forward(10)
+    turtle.penup()
+    turtle.forward(10)
+    turtle.pendown()
 
 
 
